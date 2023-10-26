@@ -112,7 +112,9 @@ export function Pills({ pills, headers, toggleHeader }: PillsProps) {
   }, [])
 
   React.useLayoutEffect(() => {
-    setLayoutElements(createLayout(pillsWidth, containerWidth, pills))
+    if (pillsWidth.size) {
+      setLayoutElements(createLayout(pillsWidth, containerWidth, pills))
+    }
   }, [pills, pillsWidth, containerWidth])
 
   const setPillRef = (id: PillData['id'], node: HTMLDivElement) => {
